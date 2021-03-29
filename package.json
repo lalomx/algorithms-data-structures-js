@@ -1,0 +1,25 @@
+{
+  "name": "algorithms-data-structures",
+  "version": "0.1.0",
+  "description": "Examples of using algorithms and data structures in JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalomx/algorithms-data-structures-js.git"
+  },
+  "author": "Eduardo Velazquez <lalo0892@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lalomx/algorithms-data-structures-js/issues"
+  },
+  "homepage": "https://github.com/lalomx/algorithms-data-structures-js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10"
+  }
+}

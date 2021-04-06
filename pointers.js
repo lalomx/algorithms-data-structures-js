@@ -45,28 +45,6 @@ export const countUniqueValues = (arr) => {
   return i !== 0 ? i + 1 : 0
 }
 
-// maxSubArray
-export const maxSubArray = (arr, num) => {
-  // initialaze tempSum
-  let tempSum = 0
-  // initialize maxSum
-  let maxSum = 0
-  // loop over array until num to get the first n-elements sum
-  for (let i = 0; i < num; i++) {
-    tempSum += arr[i]
-  }
-  maxSum = tempSum
-
-  // loop over array and sliding the windows of elements until
-  // [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  for (let i = num; i < arr.length; i++) {
-    tempSum = tempSum - arr[i - num] + arr[i]
-    maxSum = Math.max(maxSum, tempSum)
-  }
-
-  return maxSum
-}
-
 // Function that has two arguments
 // The two number have the same frequency of digits
 export const sameFrequency = (num1, num2) => {

@@ -6,38 +6,25 @@ function toolchanger(tools, startIndex, target) {
   }
 
   const targetIndex = obj[target];
-
   const total = tools.length;
-  let current = startIndex;
-  let movesRight = 0;
-  let movesLeft = 0;
-  while (current !== targetIndex) {
-    if (current === targetIndex) {
-      break;
-    }
 
-    movesRight++
-    current = (current + 1) > total ? 0 : current + 1
+  let toRight = targetIndex - startIndex + total
+  let toLeft = startIndex - targetIndex
+
+  if (toLeft < 0) {
+    toLeft += total
   }
 
-  current = startIndex
-
-  while (current !== targetIndex) {
-    if (current === targetIndex) {
-      break;
-    }
-
-    movesLeft++
-    current = (current - 1) < 0 ? total - 1 : current - 1
+  if (toRight > total) {
+    toRight -= total
   }
 
-  return Math.min(movesLeft, movesRight);
-
+  return Math.min(toRight, toLeft);
 }
 
-const tools = ['1', '2', '3', '4']
+const tools = ['1', '2', '3', '4', '5', '6']
 const startIndex = 1;
-const target = '4'
+const target = '5'
 
 const moves = toolchanger(tools, startIndex, target)
 console.log(moves)

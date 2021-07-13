@@ -37,25 +37,105 @@ class LinkedList {
       current = current.next
     }
 
-    console.log(current.val)
-    console.log(tail.val)
-    
     this.tail = tail
     this.tail.next = null
-    this.length -= 1
+    this.length--
 
-    if (!this.length) {
+    if (this.length === 0) {
       this.head = null;
       this.tail = null
     }
     return current;
   }
 
-  traverse() {
-    var current = this.head
-    while (current) {
-      console.log(current.val)
-      current = current.next
+  shift() {
+    if (!this.head) return undefined;
+    let current = this.head;
+    this.head = current.next
+    this.length--
+    if (this.length === 0) {
+      this.tail = null
+    };
+    return current
+  }
+
+  unshift(val) {
+    var newHead = new Node(val);
+    if (!this.head) {
+
+      this.head = newHead
+      this.tail = this.head
+    } else {
+      newHead.next = this.head;
+      this.head = newHead
+    }
+
+    this.length++;
+    return this
+  }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined
+
+    let counter = 0
+    let first = this.head
+
+    for (let i = 0; i < this.length; i++) {
+      if (i === index) {
+        break;
+      }
+      first = first.next
+    }
+
+    return first
+  }
+
+  set(index, val) {
+    const node = this.get(index);
+    if (!node) {
+      return false;
+    }
+
+    node.val = val;
+
+    return true
+  }
+
+  insert(index, val) {
+    if (index === 0) return this.unshift(val);
+    if (index === this.length) return this.push(val)
+    const node = this.get(index - 1);
+    if(!node) return false;
+
+    const newNode = new Node(val)
+    const current = node.next
+    newNode.next = current;
+    node.next = newNode;
+    this.length++
+    return true;
+  }
+
+  remove (index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length) return this.pop()
+    const prev = this.get(index - 1);
+    const removed = prev.next;
+    prev.next = removed.next
+    this.length--
+    return removed.val
+  }
+
+  reverse() {
+    let node = this.head
+    this.head = this.tail
+    this.tail = node
+    let next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
     }
   }
 }
@@ -71,4 +151,19 @@ linkedList.push('Mother fuckers!')
 linkedList.pop()
 linkedList.pop()
 linkedList.pop()
+
+linkedList.unshift('HOla');
+linkedList.unshift('Bonjour')
+
+
+
+
+
+linkedList.set(1, 'Wilkommen')
+
+linkedList.insert(1, 'Ochinawa')
+linkedList.insert(0, 'Bouongiorno')
+
+linkedList.reverse()
+
 console.log(linkedList)

@@ -23,6 +23,60 @@ class BST {
     return visited;
   }
 
+  traverse_dfs_pre() {
+    if (!this.root) { return []; }
+    const visited = [];
+    const current = this.root;
+
+    function preorder(node) {
+      visited.push(node.value);
+      if (node.left) { preorder(node.left); }
+      if (node.right) { preorder(node.right); }
+    }
+
+    preorder(current);
+
+    return visited;
+  }
+
+  traverse_dfs_post() {
+    if (!this.root) { return []; }
+    const visited = [];
+    const current = this.root;
+    function postorder(node) {
+      if (node.left) { 
+        postorder(node.left);
+      }
+      if (node.right) {
+        postorder(node.right);
+      }
+      visited.push(node.value);
+    }
+
+    postorder(current);
+
+    return visited;
+  }
+
+  traverse_dfs_in() {
+    if (!this.root) { return []; }
+    const visited = [];
+    const current = this.root;
+    function inorder(node) {
+      if (node.left) { 
+        inorder(node.left);
+      }
+      visited.push(node.value);
+      if (node.right) {
+        inorder(node.right);
+      }
+    }
+
+    inorder(current);
+
+    return visited;
+  }
+
   find(value) {
     if (!this.root) { return null; }
     let current = this.root;
@@ -90,3 +144,6 @@ tree.insert(8);
 tree.insert(20);
 
 console.log(tree.traverse_bfs());
+console.log(tree.traverse_dfs_pre())
+console.log(tree.traverse_dfs_post())
+console.log(tree.traverse_dfs_in())

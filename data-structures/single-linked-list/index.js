@@ -128,13 +128,12 @@ class LinkedList {
 
   reverse() {
     let node = this.head
+    let prev = null;
     this.head = this.tail
     this.tail = node
-    let next;
-    let prev = null;
 
     for (let i = 0; i < this.length; i++) {
-      next = node.next;
+      let next = node.next;
       node.next = prev;
     }
   }

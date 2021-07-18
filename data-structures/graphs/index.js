@@ -26,7 +26,6 @@ class Graph {
   }
 
   removeVertex(name) {
-    console.log('re')
     if (!this.list.has(name)) { return }
     
     const vertex = this.list.get(name);
@@ -34,6 +33,52 @@ class Graph {
       this.removeEdge(name, edge)
     }
     this.list.delete(name)
+  }
+
+  traverse_dfs(start) {
+    const list = this.list;
+    if (!list.has(start)) { return }
+    const vertex = list.get(start);
+    if(!vertex.size) { return; }
+    const visited = new Set();
+    visited.add(start)
+
+
+    
+
+    function helper(neighbors) {
+      for(const name of neighbors) {
+        if(visited.has(name)) { continue; }
+        visited.add(name)
+        const children = list.get(name);
+        if(!children.size) { return; }
+        helper([...children])
+      }
+    }
+
+    helper([...vertex]);
+    console.log(visited)
+  }
+
+  iterate_dfs(start) {
+    const list = this.list;
+    if (!list.has(start)) { return }
+    const stack = [start]
+    const visited = new Set();
+    
+    visited.add(start)
+
+    while(stack.length) {
+      const name = stack.pop();
+      const vertex = list.get(name)
+      for(const neighbor of vertex) {
+        if(visited.has(neighbor)) { continue; }
+        visited.add(neighbor)
+        stack.push(neighbor)
+      }
+    }
+
+    console.log(visited)
   }
 }
 
@@ -51,5 +96,5 @@ g.addEdge('Tokyo', 'Hong kong');
 g.addEdge('LA', 'Hong kong');
 g.addEdge('Dallas', 'Hong kong');
 
-g.removeVertex('Hong kong')
-console.log(g)
+g.iterate_dfs('LA');
+g.traverse_dfs('LA');

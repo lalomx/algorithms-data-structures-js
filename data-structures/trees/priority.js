@@ -5,6 +5,7 @@ class Node {
   }
 }
 
+
 class PriorityQueue {
   constructor() {
     this.values = []
@@ -80,20 +81,22 @@ class PriorityQueue {
   }
 }
 
-const er = new PriorityQueue();
-er.enqueue('flu', 5);
-er.enqueue('gunshot', 1);
-er.enqueue('high fever', 4);
-er.enqueue('broken arm', 2);
-er.enqueue('glass in foot', 3);
+module.exports = PriorityQueue
 
-// 10
-// 10 11
-// 11 10 12
-console.log(er.values)
+// const er = new PriorityQueue();
+// er.enqueue('flu', 5);
+// er.enqueue('gunshot', 1);
+// er.enqueue('high fever', 4);
+// er.enqueue('broken arm', 2);
+// er.enqueue('glass in foot', 3);
 
-console.log(er.dequeue())
-console.log(er.dequeue())
-console.log(er.dequeue())
-console.log(er.dequeue())
-console.log(er.dequeue())
+// // 10
+// // 10 11
+// // 11 10 12
+// console.log(er.values)
+
+// console.log(er.dequeue())
+// console.log(er.dequeue())
+// console.log(er.dequeue())
+// console.log(er.dequeue())
+// console.log(er.dequeue())

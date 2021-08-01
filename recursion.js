@@ -1,4 +1,4 @@
-export const countDown = (number) => {
+ const countDown = (number) => {
   if (number <= 0) {
     console.log('Done')
     return
@@ -10,16 +10,16 @@ export const countDown = (number) => {
 }
 
 
-export const sumRange = (num) => {
+const sumRange = (num) => {
   if (num === 1) return 1
   return num + sumRange(num - 1)
 }
 
-export const factorial = (num) => {
+const factorial = (num) => {
   return num === 1 ? 1 : num * factorial(num - 1)
 }
 
-export const collectOdds = (arr) => {
+const collectOdds = (arr) => {
   let result = []
 
     (function helper(input) {
@@ -33,13 +33,13 @@ export const collectOdds = (arr) => {
   return result
 }
 
-export const power = (num, exp) => {
+const power = (num, exp) => {
   if (exp === 0) return 1
   return num * power(num, exp - 1)
 }
 
 // [1, 2, 3]
-export const productOfArray = (arr) => {
+const productOfArray = (arr) => {
   let total = 1
 
     (function helper(array) {
@@ -53,7 +53,7 @@ export const productOfArray = (arr) => {
 
 // 6
 
-export const recursiveRange = (num) => {
+const recursiveRange = (num) => {
 
   let total = 0
 
@@ -69,6 +69,23 @@ export const recursiveRange = (num) => {
   return total
 }
 
-export const fib = (num) => {
-
+const fib = (n, memo=[]) => {
+  if(memo[n] !== undefined) { return memo[n] }
+  if(n <= 2) { return 1; }
+  const res = fib(n-2, memo) + fib(n-1, memo)
+  memo[n] = res
+  return res
 }
+
+const fibTab = (n) => {
+  if (n <= 2) { return 1; }
+  const fibs = [0, 1, 1];
+  for(let i = 3; i <= n; i++) {
+    fibs[i] = fibs[i-1] + fibs[i-2];
+  }
+
+  console.log(fibs)
+  return fibs[n]
+}
+
+console.log(fibTab(15000))

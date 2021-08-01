@@ -147,22 +147,6 @@ linkedList.push('Mother fuckers!')
 // node.next = new Node('World');
 // node.next.next = new Node('Mother fuckers!')
 
-linkedList.pop()
-linkedList.pop()
-linkedList.pop()
-
-linkedList.unshift('HOla');
-linkedList.unshift('Bonjour')
-
-
-
-
-
-linkedList.set(1, 'Wilkommen')
-
-linkedList.insert(1, 'Ochinawa')
-linkedList.insert(0, 'Bouongiorno')
-
 linkedList.reverse()
 
 console.log(linkedList)

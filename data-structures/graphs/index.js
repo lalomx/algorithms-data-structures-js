@@ -80,6 +80,27 @@ class Graph {
 
     console.log(visited)
   }
+
+  breadthTraverse(start) {
+    const list = this.list;
+    if (!list.has(start)) { return }
+    const queue = [start]
+    const visited = new Set();
+    
+    visited.add(start)
+
+    while(queue.length) {
+      const name = queue.shift();
+      const vertex = list.get(name)
+      for(const neighbor of vertex) {
+        if(visited.has(neighbor)) { continue; }
+        visited.add(neighbor)
+        queue.push(neighbor)
+      }
+    }
+
+    console.log(visited)
+  }
 }
 
 let g = new Graph();
@@ -98,3 +119,4 @@ g.addEdge('Dallas', 'Hong kong');
 
 g.iterate_dfs('LA');
 g.traverse_dfs('LA');
+g.breadthTraverse('LA')
